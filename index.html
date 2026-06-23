@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smile 😊</title>
+    <title>😊</title>
 <style>
         * {
             box-sizing: border-box;
@@ -85,7 +85,7 @@
 
 <div class="container" id="formContainer">
 
-    <h1>😊 Smile</h1>
+    <h1>😊</h1>
 
     <p>
         Wat bijzonder dat u deze glimlach hebt ontdekt!
@@ -102,9 +102,15 @@
         zodat uw verrassing de juiste bestemming bereikt.
     </p>
 
-    <input type="text" id="name" placeholder="Naam">
-    <input type="text" id="address" placeholder="Adres">
+    <input type="text" id="name" placeholder="Volledige naam *">
 
+<input type="text" id="street" placeholder="Straatnaam *">
+
+<input type="text" id="houseNumber" placeholder="Huisnummer *">
+
+<input type="text" id="postcode" placeholder="Postcode *">
+
+<input type="text" id="city" placeholder="Woonplaats *">
     <button onclick="submitForm()">Verzenden</button>
 
 </div>
@@ -129,19 +135,24 @@
         const db = getDatabase(app);
 
         window.submitForm = function () {
-            const name = document.getElementById("name").value.trim();
-            const address = document.getElementById("address").value.trim();
+            const street = document.getElementById("street").value.trim();
+const houseNumber = document.getElementById("houseNumber").value.trim();
+const postcode = document.getElementById("postcode").value.trim();
+const city = document.getElementById("city").value.trim();
 
-            if (!name || !address) {
-                alert("Vul je naam en adres in.");
-                return;
-            }
+if (!name || !street || !houseNumber || !postcode || !city) {
+    alert("Vul alle verplichte velden in.");
+    return;
+}
 
             push(ref(db, "submissions/"), {
-                name,
-                address,
-                timestamp: new Date().toISOString()
-            })
+    name,
+    street,
+    houseNumber,
+    postcode,
+    city,
+    timestamp: new Date().toISOString()
+})
             .then(() => {
                 document.getElementById("formContainer").style.display = "none";
 
