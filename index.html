@@ -106,10 +106,10 @@
 
 <input type="text" id="street" placeholder="Straatnaam *">
 
-<input type="text" id="houseNumber" placeholder="Huisnummer *">
-
-<input type="text" id="postcode" placeholder="Postcode *">
-
+<div style="display:flex; gap:10px;">
+    <input type="text" id="houseNumber" placeholder="Huisnummer *">
+    <input type="text" id="postcode" placeholder="Postcode *">
+</div>
 <input type="text" id="city" placeholder="Woonplaats *">
     <button onclick="submitForm()">Verzenden</button>
 
@@ -135,7 +135,8 @@
         const db = getDatabase(app);
 
         window.submitForm = function () {
-            const street = document.getElementById("street").value.trim();
+const name = document.getElementById("name").value.trim();            
+const street = document.getElementById("street").value.trim();
 const houseNumber = document.getElementById("houseNumber").value.trim();
 const postcode = document.getElementById("postcode").value.trim();
 const city = document.getElementById("city").value.trim();
@@ -168,7 +169,7 @@ if (!name || !street || !houseNumber || !postcode || !city) {
 </p>
 
 <p>
-    Uw verrassing zal binnenkort haar bestemming bereiken.
+    Uw verrassing is onderweg.
 </p>
 
 <p class="signature">
